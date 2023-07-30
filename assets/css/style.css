@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  color: #F1F3F5;
+}
+
+body {
+  background-color: #16191D;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  width: 40rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+p {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+input {
+  height: 2.2rem;
+  width: 16rem;
+  border-radius: 5px;
+  background-color: #3B3B3B;
+  border: none;
+  padding: 5px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.task-btn {
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: #3B3B3B;
+  height: 2.4rem;
+  width: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task-btn:active {
+  opacity: 0.4;
+}
+
+hr {
+  border-color: grey;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 15px;
+}
+
+.complete-btn {
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: #3B3B3B;
+  height: 2.2rem;
+  width: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.complete-btn:hover {
+  background-color: #09c409d3;
+}
+
+.delete-btn {
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  background-color: #3B3B3B;
+  height: 2.2rem;
+  width: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: red;
+}
+
+.complete-task {
+  text-decoration: line-through;
+  color: grey;
+}
+
+.active {
+  background-color: #09c409d3;
+}
