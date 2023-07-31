@@ -1,7 +1,7 @@
-function addNewTask(text, c) {
+function addNewTask(text, completed) {
   const li = createLi(text);
   tasks.appendChild(li);
-  addClass(li, c);
+  addClass(li, completed);
   saveTask();
 }
 
@@ -10,9 +10,9 @@ function clearInput() {
   taskInput.focus();
 }
 
-function addClass(li, cla) {
+function addClass(li, completed) {
   const button = li.querySelector(".complete-btn");
-  if (cla) {
+  if (completed) {
     const span = button.nextElementSibling;
     span.classList.add("complete-task");
     button.classList.add("active");
@@ -24,7 +24,7 @@ function saveTask() {
   const listOfTasks = [];
 
   for (let task of liTasks) {
-    const complete = task.classList.contains("complete-task") ? true : false;
+    const complete = task.classList.contains("complete-task");
     listOfTasks.push({ text: task.innerText, completed: complete });
   }
 
@@ -36,8 +36,8 @@ function addSavedTasks() {
   const tasks = localStorage.getItem("tasks");
   const listOfTasks = JSON.parse(tasks);
 
-  for (text of listOfTasks) {
-    addNewTask(text.text, text.completed);
+  for (task of listOfTasks) {
+    addNewTask(task.text, task.completed);
   }
 }
 
