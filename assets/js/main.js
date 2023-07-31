@@ -1,6 +1,7 @@
-function addNewTask(text) {
+function addNewTask(text, c) {
   const li = createLi(text);
   tasks.appendChild(li);
+  addClass(li, c);
   saveTask();
 }
 
@@ -9,12 +10,22 @@ function clearInput() {
   taskInput.focus();
 }
 
+function addClass(li, cla) {
+  const button = li.querySelector(".complete-btn");
+  if (cla) {
+    const span = button.nextElementSibling;
+    span.classList.add("complete-task");
+    button.classList.add("active");
+  }
+}
+
 function saveTask() {
   const liTasks = tasks.querySelectorAll("li > span");
   const listOfTasks = [];
 
   for (let task of liTasks) {
-    listOfTasks.push(task.innerText);
+    const complete = task.classList.contains("complete-task") ? true : false;
+    listOfTasks.push({ text: task.innerText, completed: complete });
   }
 
   const tasksJSON = JSON.stringify(listOfTasks);
@@ -26,7 +37,7 @@ function addSavedTasks() {
   const listOfTasks = JSON.parse(tasks);
 
   for (text of listOfTasks) {
-    addNewTask(text);
+    addNewTask(text.text, text.completed);
   }
 }
 
@@ -92,7 +103,6 @@ document.addEventListener("click", (e) => {
     target.classList.contains("complete-icon")
   ) {
     const button = target.closest("button");
-    console.log(button);
 
     if (!button.classList.contains("active")) {
       const span = button.nextElementSibling;
@@ -103,6 +113,7 @@ document.addEventListener("click", (e) => {
       span.classList.remove("complete-task");
       button.classList.remove("active");
     }
+    saveTask();
   }
 
   if (
